@@ -1,0 +1,84 @@
+<!--
+  FILE: admin.html
+  WHAT: Super Admin dashboard. Only Super Admins can open this.
+  RULE: Max 4 Super Admins. No more. System must block the 5th.
+  CAN DO:
+    1. Approve / Reject signup requests from new deployment officers
+    2. See all approved deployment officers
+    3. Delete / Manage a deployment officer
+    4. Reset password if officer forgot it
+    5. Add new Super Admin (only if less than 4)
+  WHO CAN OPEN: If not Super Admin, redirect to login.html
+  USED BY: admin.js
+  FUTURE: Add audit log - who approved who, when.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Admin - Suburban Security</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🛡️ Suburban Security</div>
+    <div>
+      <span id="adminName"></span>
+      <a href="index.html" class="btn">Home</a>
+      <button class="btn" onclick="logout()">Log Out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Super Admin Dashboard</h1>
+    <p class="sub">Only Super Admins can manage deployment officers. Max 4 Super Admins.</p>
+
+    <div id="accessDenied" class="notice" style="display:none;">
+      You are not a Super Admin. <a href="login.html">Log in as Super Admin</a>
+    </div>
+
+    <div id="adminContent">
+      <!-- 1. PENDING SIGNUP REQUESTS -->
+      <section>
+        <h2>⏳ Pending Signup Requests</h2>
+        <p>New deployment officers waiting for approval. They cannot log in until you approve.</p>
+        <div id="pendingList"></div>
+        <p id="noPending" style="display:none;">No pending requests.</p>
+      </section>
+
+      <hr>
+
+      <!-- 2. APPROVED DEPLOYMENT OFFICERS -->
+      <section>
+        <h2>👮 Approved Deployment Officers</h2>
+        <p>These officers can log in and edit parade, check-ins, OBs, guards and sites.</p>
+        <div id="approvedList"></div>
+        <p id="noApproved" style="display:none;">No approved officers yet.</p>
+      </section>
+
+      <hr>
+
+      <!-- 3. SUPER ADMINS - MAX 4 -->
+      <section>
+        <h2>⭐ Super Admins <span id="adminCount"></span> / 4</h2>
+        <p>Super Admins can approve, delete, manage officers and reset passwords.</p>
+        <div id="superAdminList"></div>
+
+        <h3>Add New Super Admin</h3>
+        <form id="addAdminForm" class="form-row">
+          <input type="text" id="newAdminName" placeholder="Full Name" required>
+          <input type="tel" id="newAdminPhone" placeholder="Phone" required>
+          <input type="email" id="newAdminEmail" placeholder="Email" required>
+          <input type="password" id="newAdminPassword" placeholder="Password" required>
+          <button type="submit" class="btn primary">Add Super Admin</button>
+          <p id="addAdminMsg"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="admin.js"></script>
+</body>
+          </html>
