@@ -1,0 +1,91 @@
+<!--
+  FILE: index.html
+  WHAT: HOME page. This is what deployment officer always sees first.
+  WHO: Everyone can see the top. Only signed-in deployment officers can EDIT.
+  FLOW: If not signed in -> show LOGIN button. If signed in -> show Dashboard.
+  FUTURE: Add more cards here, do not make new home pages.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suburban Security - Deployment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🛡️ Suburban Security</div>
+    <div id="authArea">
+      <!-- Filled by auth.js: either LOGIN + SIGNUP buttons, or Officer name + LOGOUT -->
+      <a href="login.html" class="btn primary">Log In</a>
+      <a href="signup.html" class="btn">Sign Up</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Tonight's Deployment - 4pm Parade</h1>
+    <p class="sub">Night Duty: 6pm to 6am • 5 nights on, 2 nights off</p>
+
+    <!-- If not logged in, show this message, hide edit buttons -->
+    <div id="loginNotice" class="notice">
+      You are viewing as guest. Only deployment officers can deploy, edit, and confirm OBs.
+      <a href="login.html">Log in to edit</a>
+    </div>
+
+    <!-- Dashboard cards - deployment officer sees these every day -->
+    <section class="grid">
+      <div class="card red">
+        <h3>🔴 VOIDS Tonight</h3>
+        <p class="big" id="voidCount">3</p>
+        <p>Sites with no guard</p>
+        <a href="parade.html">Fix at Parade →</a>
+      </div>
+
+      <div class="card">
+        <h3>👮 Guards With No Site</h3>
+        <p class="big" id="noSiteCount">5</p>
+        <p>New recruits / unassigned</p>
+        <a href="guards.html">See List →</a>
+      </div>
+
+      <div class="card">
+        <h3>❌ Absent Last Night</h3>
+        <p class="big" id="absentCount">1</p>
+        <a href="checkin.html">See Check-Ins →</a>
+      </div>
+
+      <div class="card">
+        <h3>⏰ Late Last Night</h3>
+        <p class="big" id="lateCount">2</p>
+        <a href="checkin.html">See Check-Ins →</a>
+      </div>
+
+      <div class="card">
+        <h3>📖 OB To Confirm</h3>
+        <p class="big">4</p>
+        <p>OB photos from WhatsApp waiting</p>
+        <a href="checkin.html">Confirm OB →</a>
+      </div>
+
+      <div class="card">
+        <h3>📅 On Off / Leave Tonight</h3>
+        <p class="big">6</p>
+        <a href="guards.html">See List →</a>
+      </div>
+    </section>
+
+    <section class="actions">
+      <h2>Quick Actions</h2>
+      <a href="parade.html" class="btn primary big" data-need-login>4pm Parade - Deploy</a>
+      <a href="checkin.html" class="btn big" data-need-login>Night Check-In / OB</a>
+      <a href="guards.html" class="btn big" data-need-login>Add Guard</a>
+      <a href="sites.html" class="btn big" data-need-login>Add Site</a>
+      <a href="hr-report.html" class="btn big" data-need-login>HR Report</a>
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
