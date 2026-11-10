@@ -1,0 +1,46 @@
+<!--
+  FILE: signup.html
+  WHAT: Signup page for new deployment officer.
+  RULE: Signup does NOT log you in. It creates a PENDING request.
+  FLOW: Signup -> Super Admin sees it on admin.html -> Approve / Reject.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Suburban Security</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-box">
+    <h1>🛡️ Suburban Security</h1>
+    <h2>Request Deployment Officer Account</h2>
+    <p>Your request will be sent to Super Admin for approval. You cannot log in until approved.</p>
+
+    <form id="signupForm">
+      <label>Full Name</label>
+      <input type="text" id="fullName" required>
+
+      <label>Phone</label>
+      <input type="tel" id="phone" required>
+
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Password</label>
+      <input type="password" id="password" required>
+
+      <label>Confirm Password</label>
+      <input type="password" id="confirmPassword" required>
+
+      <button type="submit" class="btn primary full">Send Request To Super Admin</button>
+      <p id="signupMsg"></p>
+    </form>
+
+    <p>Already approved? <a href="login.html">Log In</a></p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </main>
+  <script src="signup.js"></script>
+</body>
+</html>
