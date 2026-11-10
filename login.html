@@ -1,0 +1,38 @@
+<!--
+  FILE: login.html
+  WHAT: Login page for deployment officers only.
+  RULE: If account is Pending (not approved by Super Admin), login must FAIL.
+  FUTURE: Add "Forgot Password" -> asks Super Admin to reset.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - Suburban Security</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-box">
+    <h1>🛡️ Suburban Security</h1>
+    <h2>Deployment Officer Log In</h2>
+    <p>Only approved deployment officers can edit.</p>
+
+    <form id="loginForm">
+      <label>Phone / Email</label>
+      <input type="text" id="loginId" placeholder="e.g. 077... or officer@suburban.co.zw" required>
+
+      <label>Password</label>
+      <input type="password" id="loginPassword" required>
+
+      <button type="submit" class="btn primary full">Log In</button>
+      <p id="loginMsg" class="error"></p>
+    </form>
+
+    <p>No account? <a href="signup.html">Sign Up - needs Super Admin approval</a></p>
+    <p>Forgot password? Tell a Super Admin to reset it for you.</p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>
